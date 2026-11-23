@@ -1,0 +1,56 @@
+# Fechas de cada fase, con su fuente y su estado de verificación.
+# El código lee este fichero; nunca hay fechas escritas a mano en el código.
+# estado: verificado | aproximado | pendiente
+
+fases:
+  - id: madrid_central_aviso
+    nombre: Madrid Central en periodo de aviso
+    inicio: 2018-11-30
+    fuente: https://en.wikipedia.org/wiki/Madrid_Central
+    estado: verificado
+
+  - id: madrid_central_multas
+    nombre: Madrid Central con multas
+    inicio: 2019-03-16
+    fuente: https://www.motor.es/noticias/madrid-central-emitira-multas-desde-el-sabado-16-201955479.html
+    estado: verificado
+
+  - id: distrito_centro
+    nombre: ZBE de Especial Protección Distrito Centro (Ordenanza 10/2021)
+    inicio: 2021-09-13  # aprobación en pleno; entra en vigor al publicarse en el BOCM
+    fuente: https://www.esmartcity.es/2021/09/15/ayuntamiento-madrid-aprueba-nueva-ordenanza-movilidad-sostenible
+    estado: pendiente  # falta la fecha de publicación en el BOCM
+
+  - id: zbe_a_interior_m30
+    nombre: Etiqueta A prohibida en el interior de la M-30
+    inicio: 2022-01-01
+    fuente: https://www.esmartcity.es/2021/09/15/ayuntamiento-madrid-aprueba-nueva-ordenanza-movilidad-sostenible
+    estado: verificado
+
+  - id: zbe_a_m30
+    nombre: Etiqueta A prohibida también en la M-30
+    inicio: 2023-01-01
+    fuente: https://www.esmartcity.es/2021/09/15/ayuntamiento-madrid-aprueba-nueva-ordenanza-movilidad-sostenible
+    estado: verificado
+
+  - id: zbe_a_municipio
+    nombre: Etiqueta A no domiciliada prohibida en todo el municipio
+    inicio: 2024-01-01
+    fuente: https://www.eldiario.es/madrid/somos/guia-2025-limites-madrid-coches-etiqueta-ambiental-avisos-sancion-residentes-multas-resto_1_11895560.html
+    estado: verificado
+
+# Periodos que se excluyen o se modelan aparte.
+exclusiones:
+  - id: estado_alarma
+    nombre: Estado de alarma por covid
+    inicio: 2020-03-14
+    fin: 2020-06-21
+    fuente: https://www.boe.es/buscar/act.php?id=BOE-A-2020-3692
+    estado: verificado
+
+  - id: moratoria_2019
+    nombre: Moratoria de multas en Madrid Central
+    inicio: 2019-07-01
+    fin: 2019-07-08
+    fuente: https://www.elindependiente.com/politica/2019/07/08/las-multas-madrid-central-vuelven-este-lunes-tras-suspenderse-la-moratoria/amp/
+    estado: verificado

@@ -1,0 +1,32 @@
+# docker compose describe cómo arrancar los contenedores del proyecto,
+# para no tener que recordar órdenes "docker run" largas.
+#
+#   docker compose build            construye la imagen
+#   docker compose run --rm tests   ejecuta los tests
+#   docker compose run --rm pipeline
+#
+# "--rm" borra el contenedor al terminar (la imagen se queda).
+
+services:
+  pipeline:
+    build:
+      context: .
+      args:
+        EXTRAS: ""          # más adelante: "--extra causal --extra tda"
+    image: forma-contaminacion-madrid:dev
+    # Los datos viven fuera de la imagen: se montan como volumen.
+    # Lo que el contenedor escriba en /app/data aparece en ./data de tu máquina.
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+    command: ["python", "-m", "zbe.config"]
+
+  tests:
+    build:
+      context: .
+      target: test          # etapa del Dockerfile con pytest instalado
+    image: forma-contaminacion-madrid:test
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./config:/app/config:ro
+    command: ["pytest", "-q"]

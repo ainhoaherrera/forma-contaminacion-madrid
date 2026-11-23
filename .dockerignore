@@ -1,0 +1,10 @@
+# Lo que NO se manda a Docker al construir. Sin esto, cada build copiaría
+# los datos (cientos de MB) y la caché de capas se invalidaría sin motivo.
+.git
+.venv
+data/
+**/__pycache__
+**/.pytest_cache
+.ruff_cache
+notebooks/.ipynb_checkpoints
+reports/_site

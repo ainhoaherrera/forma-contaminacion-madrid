@@ -1,0 +1,35 @@
+[project]
+name = "zbe"
+version = "0.1.0"
+description = "La forma de la contaminación en Madrid: efecto causal de las restricciones al tráfico sobre el NO2 y su lectura topológica"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=2.0",
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "requests>=2.32",
+]
+
+# Las librerías pesadas entran por grupos, para que la imagen solo crezca
+# cuando la fase que las necesita empiece.
+[project.optional-dependencies]
+causal = ["statsmodels>=0.14", "pymc>=5.16", "lightgbm>=4.3", "pysyncon>=1.3"]
+tda = ["gudhi>=3.10", "pykrige>=1.7", "scipy>=1.13"]
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zbe"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
